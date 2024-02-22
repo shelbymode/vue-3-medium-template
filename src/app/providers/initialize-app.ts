@@ -9,16 +9,12 @@ import { directivesMap } from '../directives'
 import { initializeDirectives } from '.'
 
 import { routes } from '@/pages/routes'
-import { TLocale } from '@/shared/constants'
 
-export async function initializeApp(
-  app: ReturnType<typeof createApp>,
-  options: { setCurrentLocale: (maybeNewlocale: TLocale, path: string, next: NavigationGuardNext) => Promise<void> }
-) {
+export async function initializeApp(app: ReturnType<typeof createApp>) {
   initializeGlobalErrorHandling(app)
   initializeDirectives(app, directivesMap)
 
-  const [router, store] = [instantiateRouter(routes, options), instantiateStore()]
+  const [router, store] = [instantiateRouter(routes), instantiateStore()]
 
   return { router, store }
 }

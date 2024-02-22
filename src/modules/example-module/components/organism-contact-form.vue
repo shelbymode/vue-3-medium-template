@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
 import { useContactFormValidation, IContactFormFields } from '../composables/form-validation'
 
 import { IFormInfo } from '@/shared/composables/form-validation'
@@ -9,35 +7,33 @@ import { VAtomButton } from '@/shared/ui/atoms/buttons'
 
 const { isFormValid, formValidatorManager, touch, getStatusValidation } = useContactFormValidation()
 
-const { t } = useI18n()
-
 // Just describe our inputs (it's not related with validation at all)
 const formInfoInputs: IFormInfo<IContactFormFields>[] = [
   {
     id: 'contact-email-id',
-    label: computed(() => t(`common.email`)),
-    placeholder: computed(() => t(`common.formPlaceholder.email`)),
+    label: computed(() => 'Email'),
+    placeholder: computed(() => 'Input email'),
     field: 'email',
     tag: 'input',
   },
   {
     id: 'contact-name-id',
-    label: computed(() => t(`common.name`)),
-    placeholder: computed(() => t(`common.formPlaceholder.name`)),
+    label: computed(() => 'Name'),
+    placeholder: computed(() => 'Input name'),
     field: 'name',
     tag: 'input',
   },
   {
     id: 'contact-theme-id',
-    label: computed(() => t(`common.theme`)),
-    placeholder: computed(() => t(`common.formPlaceholder.theme`)),
+    label: computed(() => 'Theme'),
+    placeholder: computed(() => 'Input theme'),
     field: 'theme',
     tag: 'input',
   },
   {
     id: 'contact-message-id',
-    label: computed(() => t(`common.message`)),
-    placeholder: computed(() => t(`common.formPlaceholder.message`)),
+    label: computed(() => 'Message'),
+    placeholder: computed(() => 'Input message'),
     field: 'message',
     tag: 'textarea',
   },
@@ -61,9 +57,7 @@ const formInfoInputs: IFormInfo<IContactFormFields>[] = [
         />
       </div>
 
-      <VAtomButton :is-disabled="!isFormValid" class="contact-form__send-button">
-        {{ $t(`common.button.send`) }}
-      </VAtomButton>
+      <VAtomButton :is-disabled="!isFormValid" class="contact-form__send-button"> Send </VAtomButton>
     </form>
   </div>
 </template>

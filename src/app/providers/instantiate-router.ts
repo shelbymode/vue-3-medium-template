@@ -7,7 +7,7 @@ import {
   createWebHistory,
 } from 'vue-router'
 
-import { RouteNames, TLocale, environments } from '@shared/constants'
+import { RouteNames, environments } from '@shared/constants'
 
 const isShowLoader = ref(false)
 
@@ -25,10 +25,7 @@ export function useGetRootPage(route: RouteLocationNormalizedLoaded) {
   }
 }
 
-export function instantiateRouter(
-  routes: RouteRecordRaw[],
-  options: { setCurrentLocale: (maybeNewlocale: TLocale, path: string, next: NavigationGuardNext) => Promise<void> }
-) {
+export function instantiateRouter(routes: RouteRecordRaw[]) {
   const router = createRouter({
     history: createWebHistory(environments.BASE_URL),
     routes,
@@ -41,12 +38,9 @@ export function instantiateRouter(
     },
   })
 
-  router.beforeEach(async (to, _, next) => {
+  router.beforeEach(async (to) => {
     document.title = `${environments.TITLE} - ${to.meta.title}`
     isShowLoader.value = true
-    const { setCurrentLocale } = options
-    const currentLocale = (to.params.locale as TLocale) || 'en'
-    await setCurrentLocale(currentLocale, to.path, next)
   })
 
   router.afterEach(() => {

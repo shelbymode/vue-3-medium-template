@@ -24,7 +24,6 @@
     "qrcode.vue": "^3.4.1",
     "uuid": "^9.0.1",
     "vue": "^3.4.19",
-    "vue-i18n": "9.9.1",
     "vue-qrcode-reader": "^5.5.3",
     "vue-router": "^4.3.0",
     "zod": "^3.22.4"
@@ -32,7 +31,6 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.30",
     "@iconify-json/fluent": "^1.1.48",
-    "@intlify/unplugin-vue-i18n": "^2.0.0",
     "@types/base-64": "^1.0.2",
     "@types/node": "^20.11.20",
     "@types/uuid": "^9.0.8",
